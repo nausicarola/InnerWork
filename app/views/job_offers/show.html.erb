@@ -1,0 +1,16 @@
+
+<div class="card">
+  <div class="card-header">
+    <h2><%= @job_offer.title %></h2>
+  </div>
+  <div class="card-body">
+        <p><strong>Descripción:</strong></p>
+        <p><%= @job_offer.description %></p>
+
+        <% if current_user.admin? %>
+        <%= link_to 'Editar', edit_job_offer_path(@job_offer), class: 'btn btn-warning' %> 
+        <% end %>
+   </div>
+</div>
+<br>
+<%= link_to 'Volver', job_offers_path, class: 'btn btn-secondary' %>

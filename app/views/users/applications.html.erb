@@ -1,0 +1,26 @@
+<h1>Mis Postulaciones</h1>
+
+<% if @applications.present? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Oferta</th>
+        <th>Fecha de Postulación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @applications.each do |application| %>
+        <tr>
+          <td><%= application.job_offer.title %></td>
+          <td><%= application.created_at.strftime("%d/%m/%Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info" role="alert">
+    No tienes postulaciones.
+  </div>
+<% end %>
+
+<%= link_to 'Volver', root_path, class: 'btn btn-secondary' %>

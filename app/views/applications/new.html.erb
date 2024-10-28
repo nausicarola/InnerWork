@@ -1,0 +1,22 @@
+<h1>Postularse a <%= @job_offer.title %></h1>
+
+<%= form_with(model: [@job_offer, @application], local: true) do |form| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> impidieron que la postulación se guardara:</h2>
+
+      <ul>
+        <% @application.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Postularme', class: 'btn btn-primary' %> <!-- Botón para enviar la postulación -->
+  </div>
+
+<% end %>
+
+<%= link_to 'Volver', job_offers_path, class: 'btn btn-secondary' %>

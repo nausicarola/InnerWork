@@ -1,0 +1,36 @@
+<h1>Ofertas Laborales</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job_offers.each do |offer| %>
+      <tr>
+        <td><%= offer.title %></td>
+        <td><%= truncate(offer.description, length: 50) %></td>
+        <td>
+           <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <%= link_to 'Ver', job_offer_path(offer), class: 'btn btn-info'%> |
+              <%= link_to 'Editar', edit_job_offer_path(offer), class: 'btn btn-warning' %> |
+              <%= link_to 'Eliminar', job_offer_path(offer), method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
+            <% else%>
+              <%= link_to 'Ver', job_offer_path(offer),class: 'btn btn-info' %>
+              <%= link_to 'Postular', new_job_offer_application_path(offer), class: 'btn btn-success' %> <!-- Botón para postular -->
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to 'Nueva Oferta', new_job_offer_path, class: 'btn btn-primary' %>
+    <% end %>
+<% end %>

@@ -1,0 +1,48 @@
+<h1><%= action_name.capitalize %> Usuario</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> impidieron que el usuario se guardara:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %> (dejar en blanco si no se cambia)
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation %> (dejar en blanco si no se cambia)
+    <%= form.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+
+  <!-- Si deseas permitir subir imágenes -->
+  <div class="form-group">
+    <%= form.label :image, "Foto del Usuario" %> <!-- Asegúrate de tener este campo en tu modelo -->
+    <%= form.file_field :image, class: 'form-control' %> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit "#{action_name.capitalize} Usuario", class: 'btn btn-primary' %> <!-- Cambia el texto del botón según sea nuevo o editar -->
+  </div>
+
+<% end %>
+<br>
+<%= link_to 'Volver', users_path, class: 'btn btn-secondary' %>

@@ -1,0 +1,32 @@
+<h1>Nueva Oferta Laboral</h1>
+
+<%= form_with(model: @job_offer, local: true) do |form| %>
+  <% if @job_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_offer.errors.count, "error") %> impidieron que la oferta se guardara:</h2>
+
+      <ul>
+        <% @job_offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "#{action_name.capitalize} Oferta", class: 'btn btn-primary' %> <!-- Cambia el texto del botón según sea nuevo o editar -->
+  </div>
+
+<% end %>
+<br>
+<%= link_to 'Volver', job_offers_path, class: 'btn btn-secondary' %>
