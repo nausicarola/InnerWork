@@ -8,9 +8,11 @@
       <li class="nav-item">
         <%= link_to 'Ofertas', job_offers_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'Postulaciones', applications_user_path(current_user), class: 'nav-link' %> <!-- Enlace a las postulaciones -->
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Postulaciones', applications_user_path(current_user), class: 'nav-link' %> <!-- Enlace a las postulaciones -->
+        </li>
+       <% end %>
       <% if current_user&.admin? %> <!-- Solo mostrar para el administrador -->
         <li class="nav-item">
           <%= link_to 'Lista Usuarios', users_path, class: 'nav-link' %>

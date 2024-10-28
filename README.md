@@ -1,24 +1,28 @@
-# README
+Prueba - Desarrollo de aplicaciones con Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Modulos 6
 
-Things you may want to cover:
+Alumna Carola Pulgar
 
-* Ruby version
+Requerimientos
+1. Integrar imagen con Modelado de las entidades de la aplicación.
+2. Integrar prueba unitaria sobre el proceso de postulación de un usuario.
+3. Todas las imágenes deben estar alojadas en un bucket de S3.
+4. Solo integrar crud de usuarios y ofertas laborales.
 
-* System dependencies
+Modelo entidad relacion
+![alt text](image.png)
 
-* Configuration
 
-* Database creation
+gemas Ocupadas
 
-* Database initialization
+gem "devise" # Para la autenticación de usuarios
+gem "figaro" # Para la gestión de configuraciones
+gem "faker"  # Para generar datos de prueba
+gem "aws-sdk-s3" # Para interactuar con Amazon S3
 
-* How to run the test suite
+Usuario Admin esteban@empresa.com
+clave  123456
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Usuario normal carola@gmail.com 
+clave 123456
