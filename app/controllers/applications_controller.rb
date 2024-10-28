@@ -9,9 +9,10 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(user: current_user, job_offer: @job_offer)
     if @application.save
-      # Enviar notificación a Esteban (puedes usar ActionMailer)
+      UserMailer.application_notification(@application).deliver_now # Envía el correo a Esteban
       redirect_to job_offer_path(@job_offer), notice: "Te has postulado exitosamente."
     else
+      flash.now[:alert] = @application.errors.full_messages.to_sentence # Muestra los errores
       render :new
     end
   end

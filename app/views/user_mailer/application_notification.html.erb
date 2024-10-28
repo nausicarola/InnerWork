@@ -1,0 +1,11 @@
+<h1>Nueva Postulación Recibida</h1>
+
+<p>Hola Esteban,</p>
+
+<p>El usuario <strong><%= @application.user.name %></strong> se ha postulado a la oferta laboral:</p>
+<p><strong>Título de la Oferta:</strong> <%= @job_offer.title %></p>
+<p><strong>Descripción:</strong> <%= @job_offer.description %></p>
+
+<p>Fecha de Postulación: <%= @application.created_at.strftime("%d/%m/%Y") %></p>
+
+<p>Saludos,<br/>El equipo de InnerWork</p>
